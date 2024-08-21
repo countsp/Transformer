@@ -78,8 +78,6 @@ Norm能加速收敛
 ```
 
 
-其中：
-
 **x** 是输入向量（如从多头注意力得到的输出）。
 
 **W1** 是第一层的权重矩阵。
@@ -96,7 +94,13 @@ Feedforward网络中间层的维度，通常比 dmodeldmodel​ 更大，增加�
 FFN(x)=\text{ReLU}(xW1 ​+ b1​) W2​ + b2​
 ```
 
-W2是第二层的权重矩阵。
-b2​ 是第二层的偏置项。
+**W2** 是第二层的权重矩阵。
 
-这两步线性变换将输入从原始维度 dmodel​ 转换为一个更高维度的表示 dff​，然后再将其还原到原始维度 dmodel。
+**b2​** 是第二层的偏置项。
+
+**这两步线性变换将输入从原始维度 dmodel​ 转换为一个更高维度的表示 dff​，然后再将其还原到原始维度 dmodel。**
+
+
+# Decoder
+
+![Screenshot from 2024-08-21 16-48-41](https://github.com/user-attachments/assets/671b4a49-b9ac-45d1-9dcb-1b99f3f96436)
