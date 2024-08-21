@@ -50,3 +50,22 @@ Concat: n* (h*dk)
 Linear变换： (h*dk) * 512
 
 Z : n*512 与 输入x维度相同
+
+# Encoder(包括多头)
+
+![Screenshot from 2024-08-21 15-01-51](https://github.com/user-attachments/assets/e869dcc7-336a-4478-b17f-1fc43331e070)
+
+LayerNorm( X + MultiHeadNorm(X) ) 由两部分组成，add和norm
+
+Add为残差连接
+
+![Screenshot from 2024-08-21 15-33-33](https://github.com/user-attachments/assets/14c541a6-1c60-452d-bef1-0c7b879b1d28)
+
+Norm能加速收敛
+
+![Screenshot from 2024-08-21 15-32-30](https://github.com/user-attachments/assets/c091e9f2-6edc-4585-bc5f-c8e15bbc8b78)
+
+**FFN（FeedForward）**
+```math
+   FFN(x) = \text{ReLU}(xW_1 + b_1)
+```
