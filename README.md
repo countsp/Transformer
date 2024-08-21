@@ -66,6 +66,37 @@ Norm能加速收敛
 ![Screenshot from 2024-08-21 15-32-30](https://github.com/user-attachments/assets/c091e9f2-6edc-4585-bc5f-c8e15bbc8b78)
 
 **FFN（FeedForward）**
+
+每个编码器或解码器层中的Feedforward部分是一个两层的全连接神经网络，具有如下形式：
+
+**第一次变换：**
+
+线性变换 + 非线性激活函数（通常使用ReLU激活函数）升维
+    
 ```math
    FFN(x) = \text{ReLU}(xW_1 + b_1)
 ```
+
+
+其中：
+
+**x** 是输入向量（如从多头注意力得到的输出）。
+
+**W1** 是第一层的权重矩阵。
+
+**b1** 是第一层的偏置项。
+
+第一层的权重矩阵 **W1** 和偏置项 **b1**​ 都是通过模型训练过程学到的。
+
+Feedforward网络中间层的维度，通常比 dmodeldmodel​ 更大，增加了模型的容量。
+
+**第二次线性变换：**
+
+```math
+FFN(x)=\text{ReLU}(xW1 ​+ b1​) W2​ + b2​
+```
+
+W2是第二层的权重矩阵。
+b2​ 是第二层的偏置项。
+
+这两步线性变换将输入从原始维度 dmodel​ 转换为一个更高维度的表示 dff​，然后再将其还原到原始维度 dmodel。
