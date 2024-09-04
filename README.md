@@ -35,11 +35,24 @@
 
 权重矩阵 WQ​、WK​、WV​ 是在模型训练过程中通过反向传播算法学习得到的。
 
-分别与x相乘生成QKV
+对于输入序列中的每个词，我们首先生成它的 Query 向量、Key 向量和 Value 向量。
+
 ![Screenshot from 2024-08-21 14-29-48](https://github.com/user-attachments/assets/2b41ea71-3a89-4ce3-b57d-9510a2085fea)
 
+$`1/\sqrt{dk}`$ 这是一个缩放因子，用来防止点积的数值过大，避免梯度消失或爆炸。dk​ 是 Key 向量的维度。
+
+Softmax：对每个词的相关性分数进行归一化，将其转化为概率分布，表示每个词对当前词的贡献大小。
+
+V：将注意力权重应用于 Value 向量，加权求和，得到当前词的输出表示。
+
+$`Q*K^T`$ ：计算 Query 和 Key 向量的点积，表示当前词与其他词的相关性。点积越大，表示相关性越强。
+
 ![Screenshot from 2024-08-21 14-41-34](https://github.com/user-attachments/assets/911c7af7-c2da-4ed6-a1e8-f2759ddd2ee4)
- 
+
+
+
+
+
 **多头self-attention：** 
 训练时生成多组QKV，使用不同的QKV
 
