@@ -119,3 +119,6 @@ FFN(x)=\text{ReLU}(xW1 ​+ b1​) W2​ + b2​
 # Decoder
 
 ![Screenshot from 2024-08-21 16-48-41](https://github.com/user-attachments/assets/671b4a49-b9ac-45d1-9dcb-1b99f3f96436)
+
+
+## Q&A
