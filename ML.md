@@ -60,3 +60,43 @@ $`L = \frac{1}{N} \sum_{i=1}^N (y_i - t_i)^2`$
 其中 $`\eta`$ 是学习率，一个小的正数，决定了在梯度方向上前进的步长大小。
 
 **使用梯度下降算法寻找最小损失函数值的过程想象为在 w 和 b 组成的参数空间中寻找一个点，使得在这个点上，损失函数 L 的值最小。**
+
+```
+import torch
+
+# 随机生成一些数据
+# 输入x和输出y的关系为 y = 3x + 2 + noise
+x = torch.randn(100, 1)  # 100个样本，每个样本1个特征
+y = 3 * x + 2 + torch.randn(100, 1) * 0.1  # 真实模型加上一些噪声
+
+# 初始化权重和偏置
+w = torch.randn(1, requires_grad=True)  # 需要计算梯度
+b = torch.randn(1, requires_grad=True)  # 需要计算梯度
+
+# 设置学习率
+learning_rate = 0.01
+
+# 训练模型
+for i in range(1000):  # 进行1000次迭代
+    # 前向传播
+    y_pred = x * w + b  # 模型预测
+    loss = ((y_pred - y) ** 2).mean()  # 计算均方误差损失
+
+    # 显示训练过程中的损失
+    if i % 100 == 0:
+        print(f"Iteration {i}: Loss = {loss.item()}")
+
+    # 反向传播
+    loss.backward()  # 计算损失关于所有参数的梯度
+
+    # 参数更新
+    with torch.no_grad():  # 更新参数时不需要计算梯度
+        w -= learning_rate * w.grad  # 更新权重
+        b -= learning_rate * b.grad  # 更新偏置
+
+        # 清零梯度，准备下一轮迭代
+        w.grad.zero_()
+        b.grad.zero_()
+
+print(f"Trained model: y = {w.item()}x + {b.item()}")
+```
