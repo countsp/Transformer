@@ -122,3 +122,10 @@ FFN(x)=\text{ReLU}(xW1 ​+ b1​) W2​ + b2​
 
 
 ## Q&A
+
+**与 Seq2Seq 模型的不同之处**
+
+在每个时间步，我们输入直到当前时间步所产生的整个输出序列，而不是只输入上一个时间步产生的词（类似输入序列长度可变的自回归模型）。
+
+
+这非常重要，把原文粘过来：The difference from the Seq2Seq model is that, at each timestep， we re-feed the entire output sequence generated thus far, rather than just the last word.
