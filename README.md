@@ -129,3 +129,6 @@ FFN(x)=\text{ReLU}(xW1 ​+ b1​) W2​ + b2​
 
 
 这非常重要，把原文粘过来：The difference from the Seq2Seq model is that, at each timestep， we re-feed the entire output sequence generated thus far, rather than just the last word.
+
+**除以$'sqrt(dk) '$的功能**
+避免梯度消失，要降低方差，雅各比不为0
