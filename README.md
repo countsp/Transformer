@@ -45,7 +45,7 @@ $`1/\sqrt{dk}`$ 这是一个缩放因子，用来防止点积的数值过大，�
 
 $`Softmax`$ :对每个词的相关性分数进行归一化，将其转化为概率分布，表示每个词对当前词的贡献大小。大的数更大，小的数更小，给模型信心。
 
-$`Softmax（Q*K^T）/\sqrt{dk}`$ ：Attention weight注意力权重
+$`Softmax(Q*K^T/sqrt{dk})`$ ：Attention weight注意力权重
 
 $`V`$ ：将注意力权重应用于 Value 向量，加权求和，得到当前词的输出表示。
 
