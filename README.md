@@ -82,6 +82,8 @@ Norm能加速收敛
 
 ![Screenshot from 2024-08-21 15-32-30](https://github.com/user-attachments/assets/c091e9f2-6edc-4585-bc5f-c8e15bbc8b78)
 
+
+
 **FFN（FeedForward）**
 
 每个编码器或解码器层中的Feedforward部分是一个两层的全连接神经网络，具有如下形式：
@@ -134,3 +136,4 @@ FFN(x)=\text{ReLU}(xW1 ​+ b1​) W2​ + b2​
 
 **除以$'sqrt(dk) '$的功能**
 避免梯度消失，要降低方差，雅各比不为0
+
